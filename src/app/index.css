@@ -13,3 +13,9 @@
 .jumbotron {
   background-color:#f6f6f6;
 }
+
+.jumbotron input[type="text"] {
+  margin-right:10px;
+  width:300px;
+  height:35px;
+}

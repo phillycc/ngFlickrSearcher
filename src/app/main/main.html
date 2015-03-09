@@ -1,26 +1,27 @@
-<div class="container">
+<div class="container" ng-controller="MainCtrl">
 
   <div ng-include="'components/navbar/navbar.html'"></div>
 
   <div class="jumbotron text-center">
     <h1><img src="assets/images/FlickrLogo.png" width="200"> search<span style="color:#ff0084">r</span></h1>
-    <form>
-      <input type="text"><a class="btn btn-sm btn-success" ng-href="#">Submit</a>
+    <form role="from" name="searchForm" ng-submit="search()">
+      <input id="searchTerms" name="searchTerm" type="text" ng-model="searchTerm"><button class="btn btn-default">Submit</a>
     </form>
   </div>
-
-  <!--<div class="row">
-    <div class="col-sm-6 col-md-4" ng-repeat="awesomeThing in awesomeThings | orderBy:'rank'">
+  <div class="col-sm-12" ng-show="isSearching">
+    Searching flickr photos for search term: {{ searchTerm }}
+  </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-6 col-md-4" ng-repeat="picture in results.photos.photo">
       <div class="thumbnail">
-        <img class="pull-right" ng-src="assets/images/{{awesomeThing.logo}}" alt="{{awesomeThing.title}}">
+        <img class="pull-right" ng-src="https://farm{{picture.farm}}.staticflickr.com/{{picture.server}}/{{picture.id}}_{{picure.secret}}_b.jpg">
         <div class="caption">
-          <h3>{{awesomeThing.title}}</h3>
-          <p>{{awesomeThing.description}}</p>
-          <p><a ng-href="{{awesomeThing.url}}">{{awesomeThing.url}}</a></p>
+          <p>{{ picture.title }}</p>
         </div>
       </div>
     </div>
-  </div>-->
+  </div>
 
   <hr>
 
