@@ -5,21 +5,23 @@
   <div class="jumbotron text-center">
     <h1><img src="assets/images/FlickrLogo.png" width="200"> search<span style="color:#ff0084">r</span></h1>
     <form role="from" name="searchForm" ng-submit="search()">
-      <input id="searchTerms" name="searchTerm" type="text" ng-model="searchTerm"><button class="btn btn-default">Submit</a>
+      <input id="searchTerms" name="searchTerm" type="text" ng-model="searchTerm" required><button class="btn btn-default">Submit</a>
     </form>
   </div>
   <div class="col-sm-12" ng-show="isSearching">
     Searching flickr photos for search term: {{ searchTerm }}
   </div>
-  </div>
   <div class="row">
-    <div class="col-sm-6 col-md-4" ng-repeat="picture in results.photos.photo">
-      <div class="thumbnail">
-        <img class="pull-right" ng-src="https://farm{{picture.farm}}.staticflickr.com/{{picture.server}}/{{picture.id}}_{{picure.secret}}_b.jpg">
-        <div class="caption">
-          <p>{{ picture.title }}</p>
-        </div>
+    <div class="col-sm-6 col-md-4" id="resultContainer" ng-repeat="picture in results.photos.photo | limitTo: 9">
+      <!--<a class="imageLink" style="background-image:url({{ picture.imageSrc }});" href="{{ picture.imageSrc }}" target="_blank"></a>
+      <img class="pull-right" ng-src="{{ picture.imageSrc }}">
+      <div class="caption">
+        <p>{{ picture.title }}</p>
       </div>
+
+      ng-style="{'background-image':'url({{myBackgroundUrl}})'}"
+
+      -->
     </div>
   </div>
 
